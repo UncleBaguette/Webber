@@ -24,8 +24,7 @@ private suspend fun processing(timeInterval: Long)
     {
         if(interrupt)
         {
-            container.value ="---BREAK---"
-                break;
+           break;
         }
 
         if(!pause)
@@ -38,6 +37,7 @@ private suspend fun processing(timeInterval: Long)
         }
         delay(timeInterval)
     }
+    container.value ="---BREAK---"
 }
 
 

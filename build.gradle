@@ -1,0 +1,39 @@
+plugins {
+    id 'org.jetbrains.kotlin.js' version '1.4.32'
+}
+
+group = 'baguette.boes'
+version = '1.0'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-js'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8-1.4.0-rc-218"
+}
+
+
+
+kotlin {
+    js(IR) {
+        browser {
+            binaries.executable()
+            webpackTask {
+                cssSupport.enabled = true
+            }
+            runTask {
+                cssSupport.enabled = true
+            }
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                    webpackConfig.cssSupport.enabled = true
+                }
+            }
+        }
+    }
+}
